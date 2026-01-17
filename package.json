@@ -1,4 +1,26 @@
 {
+  "name": "wpg-bus-display",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/marmishaw14/wpg-bus-display#readme",
+  "bugs": {
+    "url": "https://github.com/marmishaw14/wpg-bus-display/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marmishaw14/wpg-bus-display.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "dotenv": "^17.2.3",
     "fastify": "^5.7.0",
@@ -13,26 +35,5 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
-  },
-  "name": "wpg-bus-display",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marmishaw14/wpg-bus-display.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/marmishaw14/wpg-bus-display/issues"
-  },
-  "homepage": "https://github.com/marmishaw14/wpg-bus-display#readme"
+  }
 }
