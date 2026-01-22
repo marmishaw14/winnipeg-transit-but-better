@@ -22,6 +22,11 @@ app.use(express.json());
 // Serve static files from public directory
 app.use(express.static(path.join(process.cwd(), "public")));
 
+// Serve index.html for root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(process.cwd(), "public", "index.html"));
+});
+
 // Routes
 app.use('/', healthRoutes);
 app.use('/', stopRoutes);
