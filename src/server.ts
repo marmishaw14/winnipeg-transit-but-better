@@ -1,32 +1,32 @@
-import 'dotenv/config';
-import Fastify from 'fastify';
-import { z } from 'zod';
+import express from 'express';
+import "dotenv/config";
+import path from "path";
+import healthRoutes from './api/v1/routes/healthRoutes';
+import stopRoutes, { setTransitClient } from './api/v1/routes/stopRoutes';
+import { WinnipegTransitClient } from './clients/winnipegTransit';
 
-const envSchema = z.object({
-    PORT: z.coerce.number().int().positive().default(3005),
-    WPG_TRANSIT_API_KEY: z.string().min(1),
+const app = express();
+const PORT = Number(process.env.PORT) || 3009;
+
+const API_KEY = process.env.WPG_TRANSIT_API_KEY?.trim();
+if (!API_KEY) {
+    throw new Error("Missing WPG Transit API Key in .env");
+}
+
+// Initialize transit client
+const transitClient = new WinnipegTransitClient(API_KEY);
+setTransitClient(transitClient);
+
+app.use(express.json());
+
+// Serve static files from public directory
+app.use(express.static(path.join(process.cwd(), "public")));
+
+// Routes
+app.use('/', healthRoutes);
+app.use('/', stopRoutes);
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
-
-const env = envSchema.parse(process.env);
-
-const app = Fastify({
-    logger: true, // pino for logging
-});
-
-app.get('/', async () => (
-    {status: 'ok'}
-));
-
-app.get('/health', async () => {
-    return { ok: true, ts: new Date().toISOString() };
-});
-
-app.listen({ port: 3005 }, function (err, address) {
-    if (err) {
-        app.log.error(err)
-        process.exit(1)
-    }
-    // Server is now listening on ${address}
-});
-
-export default app;
