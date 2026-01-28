@@ -1,7 +1,8 @@
 services:
   app:
-    image: winnipeg-transit-but-better
-    container_name: wpg-transit-but-better
+    build: .
+    image: wpg-bus-display:latest
+    container_name: wpg-bus
     ports:
       - '3009:3009'
     env_file:
