@@ -13,8 +13,8 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: wpg-bus-tunnel
     restart: unless-stopped
-    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
-    environment:
-      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    command: tunnel run
+    volumes:
+      - /home/fr3sh/.cloudflared:/home/nonroot/.cloudflared
     depends_on:
       - app
