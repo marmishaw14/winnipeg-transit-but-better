@@ -1,0 +1,9 @@
+services:
+  app:
+    image: winnipeg-transit-but-better
+    container_name: wpg-transit-but-better
+    ports:
+      - '3009:3009'
+    env_file:
+      - .env
+    restart: unless-stopped
