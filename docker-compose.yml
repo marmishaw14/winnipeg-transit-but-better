@@ -3,8 +3,18 @@ services:
     build: .
     image: wpg-bus-display:latest
     container_name: wpg-bus
-    ports:
-      - '3009:3009'
     env_file:
       - .env
     restart: unless-stopped
+    expose:
+      - '3009'
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: wpg-bus-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    depends_on:
+      - app
