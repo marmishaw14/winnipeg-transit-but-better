@@ -8,7 +8,9 @@ This project is being built to display bus arrival time for a user's given stop.
 
 ### Resources
 <a href="https://api.winnipegtransit.com/">Winnipeg Open Data API</a>
+
 <a href="">The City of Winnipeg Open Data - Recent Transit On-Time Performance Data</a>
+
 <a href="">The City of Winnipeg Open Data - Transit Pass-ups</a>
 
 ### Note: This project is not affiliated with Winnipeg Transit
