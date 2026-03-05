@@ -11,4 +11,4 @@ This project is being built to display bus arrival time for a user's given stop.
 <a href="">The City of Winnipeg Open Data - Recent Transit On-Time Performance Data</a>
 <a href="">The City of Winnipeg Open Data - Transit Pass-ups</a>
 
-#### Note: This project is not affiliated with Winnipeg Transit.
+### Note: This project is not affiliated with Winnipeg Transit
